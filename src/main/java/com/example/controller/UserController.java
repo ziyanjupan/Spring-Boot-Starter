@@ -29,7 +29,7 @@ public class UserController {
     @RequestMapping("/getUserJson")
     public IMoocJSONResult getUserJson() {
         User u = new User();
-        u.setName("Sam Zhu123");
+        u.setName("Sam Zhu");
         u.setBirthday(new Date());
         u.setAge(18);
         u.setPassword("12434");
