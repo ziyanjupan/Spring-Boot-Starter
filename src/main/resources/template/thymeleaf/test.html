@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test</title>
+</head>
+<body>
+<div>
+    用户姓名:
+    <input th:id="${user.name}" th:name="${user.name}" th:value="${user.name}">
+    <br/>
+    用户年龄:
+    <input th:value="${user.age}"/>
+    <br/>
+    用户生日:
+    <input th:value="${#dates.format(user.birthday,'yyyy-mm-dd')}"/>
+</div>
+<br/>
+
+<div th:object="${user}">
+    用户姓名:
+    <input th:id="*{name}" th:name="*{name}" th:value="*{name}">
+    <br/>
+
+    用户年龄:
+    <input th:value="*{age}"/>
+    <br/>
+
+    用户生日:
+    <input th:value="*{#dates.format(birthday,'yyyy-mm-dd')}"/>
+</div>
+</body>
+</html>
