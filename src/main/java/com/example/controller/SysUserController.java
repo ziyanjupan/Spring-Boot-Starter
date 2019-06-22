@@ -10,7 +10,6 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.swing.*;
 import java.util.Date;
 
 @RestController
@@ -19,9 +18,6 @@ public class SysUserController {
 
     @Autowired
     private UserService userService;
-
-    @Autowired
-    private Sid sid;
 
     @RequestMapping("/saveUser")
     public IMoocJSONResult saveUser() throws Exception {
