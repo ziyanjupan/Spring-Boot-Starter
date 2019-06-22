@@ -1,11 +1,13 @@
 package com.example.service.impl;
 
 import com.example.mapper.SysUserMapper;
+import com.example.mapper.SysUserMapperCustom;
 import com.example.pojo.SysUser;
 import com.example.service.UserService;
 import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.thymeleaf.util.ObjectUtils;
 import org.thymeleaf.util.StringUtils;
 import tk.mybatis.mapper.entity.Example;
 
@@ -16,6 +18,9 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private SysUserMapper sysUserMapper;
+
+    @Autowired
+    private SysUserMapperCustom sysUserMapperCustom;
 
     @Override
     public void saveUser(SysUser user) throws Exception {
@@ -68,5 +73,23 @@ public class UserServiceImpl implements UserService {
         example.orderBy("id").desc();
 
         return sysUserMapper.selectByExample(example);
+    }
+
+    @Override
+    public SysUser getUserByIdCustom(Integer id) {
+        List<SysUser> userList=sysUserMapperCustom.selectById(id);
+        if (userList==null||userList.isEmpty()){
+            return null;
+        }
+        return userList.get(0);
+    }
+
+    @Override
+    public void saveUserTransactional(SysUser user) {
+        sysUserMapper.insert(user);
+
+        int a = 1 / 0;
+
+        sysUserMapper.deleteByPrimaryKey(1);
     }
 }
