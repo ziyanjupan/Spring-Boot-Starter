@@ -13,14 +13,14 @@ public class FreemarkerController {
     private Resource resource;
 
     @RequestMapping("/index")
-    public String Index(ModelMap map){
+    public String Index(ModelMap map) {
         //map=modelandview
-        map.addAttribute("resource",resource);
+        map.addAttribute("resource", resource);
         return "freemarker/index";
     }
 
     @RequestMapping("center")
-    public String center(){
+    public String center() {
         return "freemarker/center/center";
     }
 }
