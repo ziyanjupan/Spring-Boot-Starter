@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://www.mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+
+<generatorConfiguration>
+
+    <classPathEntry location="${oralce.jar.path}" />
+<!--    <classPathEntry-->
+<!--            location="/Users/yehaixiao/Maven/mysql/mysql-connector-java/5.1.30/mysql-connector-java.jar"/>-->
+
+    <context id="context" targetRuntime="MyBatis3" >
+
+        <commentGenerator>
+            <property name="suppressAllComments" value="true" />
+        </commentGenerator>
+
+        <jdbcConnection driverClass="oracle.jdbc.driver.OracleDriver"
+                        connectionURL="jdbc:oracle:thin:@10.1.44.146:1532:PORTTEST" userId="cmp_dev" password="Oo4EPokoFoMx" />
+
+        <javaModelGenerator targetPackage="com.hikvision.hikcmp.model" targetProject="D:\ibatis_generate" />
+
+        <sqlMapGenerator targetPackage="com.hikvision.hikcmp.mapper" targetProject="D:\ibatis_generate"  />
+
+        <javaClientGenerator targetPackage="com.hikvision.hikcmp.mapper" targetProject="D:\ibatis_generate" type="XMLMAPPER" />
+        <!-- 需要生成的实体类对应的表名，多个实体类复制多份该配置即可 -->
+        <table tableName="T_CMP_SECOND_SALE_OUT_REPORT" domainObjectName="SecondSaleOutReportDO"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+        </table>
+
+    </context>
+
+</generatorConfiguration>
