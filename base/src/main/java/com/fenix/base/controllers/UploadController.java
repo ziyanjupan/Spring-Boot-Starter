@@ -1,5 +1,6 @@
 package com.fenix.base.controllers;
 
+import com.fenix.base.DTO.UploadDTO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,6 +35,24 @@ public class UploadController {
             Path path = Paths.get(UPLOADED_FOLDER + file.getOriginalFilename());
             Files.write(path, bytes);
             return "upload success";
+        } catch (IOException e) {
+            e.printStackTrace();
+            return "upload failed";
+        }
+    }
+
+    @ApiOperation("文件上传v2")
+    @RequestMapping(value = "/uploadFile", method = RequestMethod.POST)
+    public String index(UploadDTO uploadDTO,@RequestParam("file") MultipartFile file) {
+        if (file.isEmpty()) {
+            return "upload file required!";
+        }
+        try {
+            // Get the file and save it somewhere
+            byte[] bytes = file.getBytes();
+            Path path = Paths.get(UPLOADED_FOLDER + file.getOriginalFilename());
+            Files.write(path, bytes);
+            return uploadDTO.getName() + "upload success";
         } catch (IOException e) {
             e.printStackTrace();
             return "upload failed";
