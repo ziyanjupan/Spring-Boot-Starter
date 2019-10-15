@@ -23,7 +23,7 @@
 
         <javaClientGenerator targetPackage="com.hikvision.hikcmp.mapper" targetProject="D:\ibatis_generate" type="XMLMAPPER" />
         <!-- 需要生成的实体类对应的表名，多个实体类复制多份该配置即可 -->
-        <table tableName="T_CMP_SECOND_SALE_OUT_REPORT" domainObjectName="SecondSaleOutReportDO"
+        <table tableName="T_CMP_SECOND_SALE_PROPORTION" domainObjectName="SecondSaleProportionDO"
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false">

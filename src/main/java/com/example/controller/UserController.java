@@ -1,7 +1,7 @@
 package com.example.controller;
 
 import com.example.pojo.IMoocJSONResult;
-import com.example.pojo.User;
+import com.example.pojo.SysUser;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -15,8 +15,8 @@ import java.util.Date;
 public class UserController {
     //    @ResponseBody//指明返回json
     @RequestMapping("/getUser")
-    public User getUser() {
-        User u = new User();
+    public SysUser getUser() {
+        SysUser u = new SysUser();
         u.setName("Sam Zhu");
         u.setPassword("12434");
         u.setBirthday(new Date());
@@ -28,7 +28,7 @@ public class UserController {
 
     @RequestMapping("/getUserJson")
     public IMoocJSONResult getUserJson() {
-        User u = new User();
+        SysUser u = new SysUser();
         u.setName("Sam Zhu");
         u.setBirthday(new Date());
         u.setAge(18);

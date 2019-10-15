@@ -6,7 +6,12 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 
 import java.util.Date;
 
-public class User {
+public class SysUser {
+
+    private Integer id;
+
+    private String phone;
+
     private String name;
     @JsonIgnore
     private String password;
@@ -54,5 +59,21 @@ public class User {
 
     public void setDesc(String desc) {
         this.desc = desc;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 }

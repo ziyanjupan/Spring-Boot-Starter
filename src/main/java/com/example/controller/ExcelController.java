@@ -1,6 +1,6 @@
 package com.example.controller;
 
-import com.example.pojo.User;
+import com.example.pojo.SysUser;
 import com.example.utils.ExcelUtils;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
@@ -8,11 +8,14 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.*;
+import java.net.URL;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +28,11 @@ import java.util.List;
  * @Version: 1.0
  * @Modify:
  */
+@RestController
+@RequestMapping("/excel")
 public class ExcelController {
+
+
 
     /**
      * @Description 导入Excel
@@ -34,9 +41,9 @@ public class ExcelController {
      * @Param file
      * @Return java.util.List<java.lang.String>
      */
-    public List<User> importData(File file) {
+    public List<SysUser> importData(File file) {
         Workbook wb = null;
-        List<User> userList = new ArrayList();
+        List<SysUser> sysUserList = new ArrayList();
         try {
             if (ExcelUtils.isExcel2007(file.getPath())) {
                 wb = new XSSFWorkbook(new FileInputStream(file));
@@ -62,17 +69,17 @@ public class ExcelController {
             if (age == 0 && name == null) {
                 break;
             }
-            User user = new User();
-            user.setName(name);
-            user.setAge((int) age);
-            userList.add(user);
+            SysUser sysUser = new SysUser();
+            sysUser.setName(name);
+            sysUser.setAge((int) age);
+            sysUserList.add(sysUser);
         }
         try {
             wb.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return userList;
+        return sysUserList;
     }
 
 
@@ -89,7 +96,7 @@ public class ExcelController {
      * @Param exportFilePath
      * @Return void
      */
-    public static void exportHeroInfo(List<User> userList, String templetFilePath, String exportFilePath) {
+    public static void exportHeroInfo(List<SysUser> sysUserList, String templetFilePath, String exportFilePath) {
         try {
             File exportFile = new File(exportFilePath);
             File templetFile = new File(templetFilePath);
@@ -110,8 +117,8 @@ public class ExcelController {
             Sheet sheet = workBook.getSheetAt(0);
 
             int rowIndex = 1;
-            for (User item :
-                    userList) {
+            for (SysUser item :
+                    sysUserList) {
                 Row row = sheet.createRow(rowIndex);
                 row.createCell(0).setCellValue(item.getAge());
                 row.createCell(1).setCellValue(item.getName());
