@@ -1,13 +1,16 @@
 package com.example.pojo;
 
 import lombok.Data;
+import okhttp3.Credentials;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import sun.misc.BASE64Encoder;
 
-import java.io.*;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.*;
@@ -28,28 +31,31 @@ public class DemoApplicationTests {
     @Test
     public void contextLoads() {
 
+        Long current = System.currentTimeMillis();
+        String code = Credentials.basic("728", "V9cHGvDX4y9yb4A3F3kRLeIlwASRFd4Duc4AZ9ukJpVAPonG4IfU8RmnsGTNMCaM");
+
         double da = 10.78;
         double b = da * 100;
         List<Student> students = new ArrayList<>();
 
-        Student stu1 = new Student();
-        stu1.setAge(11);
-        stu1.setName("张三");
-
-        Student stu2 = new Student();
-        stu1.setAge(11);
-        stu1.setName("张三");
-
-        students.add(stu1);
-        students.add(stu1);
-        students.add(stu1);
-        students.add(stu1);
-        students.add(stu2);
-        students.add(stu2);
-
-        List<Student> newList = students.stream()
-                .distinct()
-                .collect(Collectors.toList());
+//        Student stu1 = new Student();
+//        stu1.setAge(11);
+//        stu1.setName("张三");
+//
+//        Student stu2 = new Student();
+//        stu1.setAge(11);
+//        stu1.setName("张三");
+//
+//        students.add(stu1);
+//        students.add(stu1);
+//        students.add(stu1);
+//        students.add(stu1);
+//        students.add(stu2);
+//        students.add(stu2);
+//
+//        List<Student> newList = students.stream()
+//                .distinct()
+//                .collect(Collectors.toList());
 
         List<String> strList = new ArrayList<>();
         strList.add("1");

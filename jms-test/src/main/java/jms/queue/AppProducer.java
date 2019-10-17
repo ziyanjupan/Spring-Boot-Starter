@@ -15,8 +15,11 @@ import javax.jms.*;
 public class AppProducer {
 
     // activemq服务器的url地址，默认端口为61616
-    private static final String URL = "tcp://115.236.50.17:61616";
+
+    private static final String URL = "tcp://127.0.0.1:61616";
+
     // 队列的名称
+
     private static final String QUEUE_NAME = "queue-test";
 
     public static void main(String[] args) throws JMSException {
